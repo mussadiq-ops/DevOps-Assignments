@@ -1,0 +1,6 @@
+Network Task Solutions
+1. IP Address: nslookup guvi.in
+2. Memory: free -h
+3. CPU: top
+4. Connectivity: ping -c 4 8.8.8.8
+5. Port Check: nc -zv guvi.com 9000
