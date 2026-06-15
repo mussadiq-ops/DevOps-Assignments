@@ -4,7 +4,7 @@ services:
   custom-nginx:
     # Use the custom image pushed to Docker Hub
     # Replace 'your-dockerhub-username' with your actual Docker Hub username
-    image: your-dockerhub-username/custom-nginx:latest
+    image: image: mussadiq116/custom-nginx:latest
 
     # Alternatively, build locally:
     # build:
