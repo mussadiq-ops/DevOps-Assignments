@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  custom-nginx:
+    # Use the custom image pushed to Docker Hub
+    # Replace 'your-dockerhub-username' with your actual Docker Hub username
+    image: your-dockerhub-username/custom-nginx:latest
+
+    # Alternatively, build locally:
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+
+    container_name: custom-nginx-container
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    # Volume bind mount at /var/opt/nginx (Task Requirement)
+    volumes:
+      - type: bind
+        source: /var/opt/nginx        # Host path (on EC2 instance)
+        target: /var/opt/nginx        # Container path
+
+    # Additional named volume for nginx logs (optional)
+    # volumes:
+    #   - nginx_logs:/var/log/nginx
+
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+
+    restart: unless-stopped
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+    networks:
+      - nginx-network
+
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+
+networks:
+  nginx-network:
+    driver: bridge
+
+# Named volumes (optional - uncomment if needed)
+# volumes:
+#   nginx_logs:
+#     driver: local

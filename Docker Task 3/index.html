@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mussadiq A | CloudOps Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Space Grotesk"', 'sans-serif'] },
+                    colors: {
+                        black: '#0a0a0a',
+                        accent: '#CCFF00' // The Neon Lime color
+                    },
+                    animation: {
+                        'marquee': 'marquee 20s linear infinite',
+                        'marquee-rev': 'marqueeRev 20s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-100%)' } },
+                        marqueeRev: { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0a; color: #f0f0f0; overflow: hidden; /* Locked until loaded */ }
+        .outline-text { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
+        .brut-border { border: 1px solid #333; }
+        
+        /* The Curtain Overlay */
+        #loader-curtain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0a0a; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        
+        /* Image Container styling */
+        .image-wrapper { overflow: hidden; position: relative; }
+        .image-wrapper img { transform-origin: center; }
+    </style>
+</head>
+<body class="font-sans">
+
+    <div id="loader-curtain">
+        <div class="text-center mb-8">
+            <p class="text-gray-500 text-sm tracking-[0.5em] mb-4">PORTFOLIO 2025</p>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-2">MUSSADIQ A.</h1>
+            <div class="text-accent font-mono">System Ready...</div>
+        </div>
+        <button id="enter-btn" class="px-10 py-4 border border-white hover:bg-white hover:text-black transition duration-300 font-bold tracking-widest uppercase text-lg group">
+            <span class="group-hover:hidden">Click to Enter</span>
+            <span class="hidden group-hover:inline">Initialize</span>
+        </button>
+    </div>
+
+    <main id="site-content" class="relative opacity-0">
+        
+        <nav class="fixed w-full z-40 flex justify-between p-6 mix-blend-difference text-white">
+            <div class="font-bold text-xl">MA.</div>
+            <div class="hidden md:block font-mono text-xs">CHENNAI • INDIA</div>
+        </nav>
+
+        <section class="h-screen relative flex flex-col items-center justify-center overflow-hidden">
+            
+            <div class="absolute inset-0 flex flex-col justify-center opacity-20 pointer-events-none select-none z-0">
+                <div class="whitespace-nowrap flex animate-marquee">
+                    <span class="text-[12vw] font-black outline-text px-4">CLOUDOPS ENGINEER</span>
+                    <span class="text-[12vw] font-black outline-text px-4">CLOUDOPS ENGINEER</span>
+                </div>
+            </div>
+
+            <div class="z-10 relative">
+                <div class="image-wrapper w-[300px] h-[400px] md:w-[400px] md:h-[550px] border-2 border-gray-800">
+                    <img id="hero-img" src="hero-image.png" class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition duration-500">
+                </div>
+                
+                <div id="hero-badge" class="absolute -bottom-6 -right-6 bg-accent text-black p-4 font-bold border border-white shadow-[5px_5px_0px_rgba(255,255,255,1)]">
+                    <div class="text-xs">STATUS</div>
+                    <div class="text-xl">ONLINE</div>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="bg-accent text-black py-3 overflow-hidden -rotate-1 border-y-2 border-white z-20 relative">
+            <div class="whitespace-nowrap flex animate-marquee-rev font-bold text-2xl uppercase">
+                <span>• AWS • Docker • Kubernetes • Linux • Jenkins • Terraform • Automation •&nbsp;</span>
+                <span>• AWS • Docker • Kubernetes • Linux • Jenkins • Terraform • Automation •&nbsp;</span>
+            </div>
+        </div>
+
+        <section class="container mx-auto px-6 py-24">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="space-y-8 self-center">
+                    <h2 class="text-4xl md:text-6xl font-bold leading-tight">
+                        I AUTOMATE <br> THE <span class="text-accent">BORING STUFF.</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 leading-relaxed">
+                        I'm a CloudOps focused Automation Engineer. I bridge the gap between code and infrastructure, ensuring systems are reliable, scalable, and secure.
+                    </p>
+                    
+                    <div class="space-y-4 font-mono text-sm text-gray-500 border-l-2 border-gray-800 pl-4">
+                        <p>CURRENT: Programmer Analyst @ Cognizant</p>
+                        <p>FOCUS: CI/CD, Linux, AWS</p>
+                        <p>LOCATION: Chennai, TN</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="image-wrapper w-full h-[500px] border border-gray-800 group">
+                         <img src="about-image.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-t border-gray-800 bg-[#0f0f0f]">
+            <div class="container mx-auto px-6 py-24">
+                <h3 class="text-sm text-gray-500 tracking-widest mb-12">SELECTED WORKS</h3>
+                
+                <div class="group border-b border-gray-800 py-8 hover:bg-white hover:text-black transition duration-300 cursor-pointer">
+                    <div class="flex flex-col md:flex-row justify-between items-baseline">
+                        <h2 class="text-3xl md:text-5xl font-bold">CloudForge CI/CD</h2>
+                        <span class="font-mono text-xs mt-2 md:mt-0">JENKINS / DOCKER / AWS</span>
+                    </div>
+                    <div class="h-0 overflow-hidden group-hover:h-auto transition-all duration-300">
+                        <p class="pt-4 text-lg opacity-80">Automated pipeline infrastructure with Bash scripts and CloudWatch monitoring.</p>
+                    </div>
+                </div>
+
+                <div class="group border-b border-gray-800 py-8 hover:bg-white hover:text-black transition duration-300 cursor-pointer">
+                    <div class="flex flex-col md:flex-row justify-between items-baseline">
+                        <h2 class="text-3xl md:text-5xl font-bold">Object Recognition</h2>
+                        <span class="font-mono text-xs mt-2 md:mt-0">PYTHON / TENSORFLOW</span>
+                    </div>
+                     <div class="h-0 overflow-hidden group-hover:h-auto transition-all duration-300">
+                        <p class="pt-4 text-lg opacity-80">AI system for visually impaired users using real-time object detection.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <footer class="py-20 text-center">
+            <h2 class="text-[10vw] font-black leading-none hover:text-accent transition duration-300 cursor-pointer">
+                <a href="mailto:mussadiq.116@gmail.com">LET'S TALK</a>
+            </h2>
+            <div class="flex justify-center gap-8 mt-8 font-mono text-sm">
+                <a href="#" class="hover:text-accent">LINKEDIN</a>
+                <a href="#" class="hover:text-accent">GITHUB</a>
+                <a href="#" class="hover:text-accent">RESUME</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Initialize GSAP Timeline
+        const tl = gsap.timeline({ paused: true });
+        const btn = document.getElementById('enter-btn');
+
+        // Define the sequence
+        tl.to("#enter-btn", { opacity: 0, duration: 0.3 }) // 1. Hide Button
+          .to("#loader-curtain", { 
+              yPercent: -100, // 2. Slide curtain UP
+              duration: 1.2, 
+              ease: "power4.inOut" 
+          })
+          .to("#site-content", { opacity: 1, duration: 0.1 }, "-=0.8") // 3. Reveal Main Content
+          .from(".image-wrapper", { 
+              scale: 1.4, // 4. Start image zoomed in
+              y: 100, // Start image slightly down
+              opacity: 0,
+              duration: 1.5,
+              ease: "expo.out",
+              stagger: 0.2
+          }, "-=0.5") // Overlap with curtain slide
+          .from("#hero-badge", {
+              scale: 0,
+              rotation: -45,
+              duration: 0.5,
+              ease: "back.out(1.7)"
+          }, "-=1");
+
+        // Button Click Event
+        btn.addEventListener('click', () => {
+            tl.play();
+            document.body.style.overflow = 'auto'; // Unlock scroll
+        });
+
+        // Magnetic Image Effect (Bonus)
+        document.addEventListener('mousemove', (e) => {
+            const images = document.querySelectorAll('.image-wrapper img');
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
+
+            images.forEach(img => {
+                img.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
