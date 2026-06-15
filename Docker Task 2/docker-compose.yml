@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  webapp:
+    build: .
+    container_name: my_details_app
+    ports:
+      - "8080:80"
+    restart: always
