@@ -6,16 +6,12 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Run Script') {
             steps {
-                sh 'chmod +x hello.sh'
-                sh './hello.sh'
+                dir('Jenkins Task 2') {
+                    sh 'chmod +x hello.sh'
+                    sh './hello.sh'
+                }
             }
         }
     }
@@ -36,3 +32,4 @@ Console output is attached.""",
         }
     }
 }
+
