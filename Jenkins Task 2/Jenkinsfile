@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    triggers {
+        githubPush()
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Run Script') {
+            steps {
+                sh 'chmod +x hello.sh'
+                sh './hello.sh'
+            }
+        }
+    }
+
+    post {
+        always {
+            emailext(
+                to: 'mussadiq.off@gmail.com',
+                subject: "Jenkins Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+                body: """Job: ${env.JOB_NAME}
+Build: #${env.BUILD_NUMBER}
+Status: ${currentBuild.currentResult}
+URL: ${env.BUILD_URL}
+
+Console output is attached.""",
+                attachLog: true
+            )
+        }
+    }
+}
