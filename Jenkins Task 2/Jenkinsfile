@@ -27,7 +27,7 @@ Status: ${currentBuild.currentResult}
 URL: ${env.BUILD_URL}
 
 Console output is attached.""",
-                attachLog: true
+                attachLog: false
             )
         }
     }
